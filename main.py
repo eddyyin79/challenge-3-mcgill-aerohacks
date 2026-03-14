@@ -17,11 +17,7 @@ def main():
 
 
     while True:
-        stop = input()
-        if stop == " ":
-            print("Emergency stop activated!")
-            drone.emergency_stop()
-            break
+
         # print("Testing connection...")
 
         # print("Mode:", drone.get_mode())
@@ -30,13 +26,13 @@ def main():
 
         # print("Roll:", drone.get_roll())
 
-        drone.set_mode(1)
+        drone.set_mode(2)
        
         mode = drone.get_mode()
         # print("mode:", mode)
-        
-        hc.stabilize_drone(0,0,0,0)
-        time.sleep(5)
+        hc.PID_hover(0,0,0,5)
+       
+        time.sleep(10)
 
         drone.emergency_stop()
 
