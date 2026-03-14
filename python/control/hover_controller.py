@@ -13,19 +13,19 @@ def __init__(self, motor_Pin):
         LED_BLUE.value(0)
         time.sleep_ms(250)
 
-    def stabilize_drone(self, speed):
-        if self.get_pitch() > 0.5:
-            drone.manual_thrusts(speed - 1, speed, speed - 1, speed)
-        if self.get_pitch() < -0.5:
-            drone.manual_thrusts(speed + 1, speed , speed + 1, speed)
-        if self.get_roll() > 0.5:
-            drone.manual_thrusts(speed, speed - 1, speed , speed - 1)
-        if self.get_roll() < -0.5:
-            drone.manual_thrusts(speed, speed + 1, speed , speed + 1)
-        if self.get_yaw() > 0.5:
-            drone.manual_thrusts(speed +1, speed - 1, speed +1, speed - 1)
-        if self.get_yaw() < -0.5:
-            drone.manual_thrusts(speed - 1, speed + 1, speed - 1, speed + 1)
+def stabilize_drone(self, speed):
+    if self.get_pitch() > 0.5:
+        drone.manual_thrusts(speed - 1, speed, speed - 1, speed)
+    if self.get_pitch() < -0.5:
+        drone.manual_thrusts(speed + 1, speed , speed + 1, speed)
+    if self.get_roll() > 0.5:
+        drone.manual_thrusts(speed, speed - 1, speed , speed - 1)
+    if self.get_roll() < -0.5:
+        drone.manual_thrusts(speed, speed + 1, speed , speed + 1)
+    if self.get_yaw() > 0.5:
+        drone.manual_thrusts(speed +1, speed - 1, speed +1, speed - 1)
+    if self.get_yaw() < -0.5:
+        drone.manual_thrusts(speed - 1, speed + 1, speed - 1, speed + 1)
 
-        #a front left, b front right, c back left, d back right
-        #drone.manual_thrusts(a, b, c, d)
+    #a front left, b front right, c back left, d back right
+    #drone.manual_thrusts(a, b, c, d)
