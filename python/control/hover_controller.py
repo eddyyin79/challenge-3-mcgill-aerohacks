@@ -19,38 +19,38 @@ def stabilize_drone(self, speed):
 
     #a front left, b front right, c back left, d back right
     #drone.manual_thrusts(a, b, c, d)
-    def PID_hover(self, target_pitch, target_roll, target_altitude):
+def PID_hover(self, target_pitch, target_roll, target_altitude):
         # Implement PID control logic here
         # Calculate errors
-        pitch_error = target_pitch - drone.get_pitch()
-        roll_error = target_roll - drone.get_roll()
+    pitch_error = target_pitch - drone.get_pitch()
+    roll_error = target_roll - drone.get_roll()
 
         # Estimate vertical thrust component
         # total_thrust should be the sum of all motor thrusts (define as needed)
         # Example: total_thrust = a + b + c + d (or pass as argument)
         # For demonstration, set total_thrust = 1.0 (replace with real value)
     
-        pitch_rad = math.radians(drone.get_pitch())
-        roll_rad = math.radians(drone.get_roll())
-        vertical_thrust = total_thrust * math.cos(pitch_rad) * math.cos(roll_rad)
+    pitch_rad = math.radians(drone.get_pitch())
+    roll_rad = math.radians(drone.get_roll())
+    vertical_thrust = total_thrust * math.cos(pitch_rad) * math.cos(roll_rad)
 
         # If you know the drone's mass, you can estimate vertical acceleration:
         # mass = ... # in kg
         # g = 9.81
         # vertical_accel = (vertical_thrust / mass) - g
 
-        altitude_error = 0  # Placeholder, since true altitude is not available
+    altitude_error = 0  # Placeholder, since true altitude is not available
 
         # Calculate control outputs (this is a simplified example)
-        pitch_control = 1 * pitch_error  # P term only
-        roll_control = 1 * roll_error    # P term only
-        altitude_control = 1 * altitude_error  # P term only
+    pitch_control = 1 * pitch_error  # P term only
+    roll_control = 1 * roll_error    # P term only
+    altitude_control = 1 * altitude_error  # P term only
 
         # Adjust motor speeds based on control outputs
-        a = altitude_control + pitch_control + roll_control 
-        b = altitude_control + pitch_control - roll_control 
-        c = altitude_control - pitch_control + roll_control
-        d = altitude_control - pitch_control - roll_control
+    a = altitude_control + pitch_control + roll_control 
+    b = altitude_control + pitch_control - roll_control 
+    c = altitude_control - pitch_control + roll_control
+    d = altitude_control - pitch_control - roll_control
 
-        total_thrust = a + b + c + d  # Update total thrust based on control outputs
-        drone.manual_thrusts(a, b, c, d)
+    total_thrust = a + b + c + d  # Update total thrust based on control outputs
+    drone.manual_thrusts(a, b, c, d)
