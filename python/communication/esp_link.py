@@ -8,7 +8,6 @@ which will lead to increased drift
 """
 
 import socket
-import time
 import select
 
 

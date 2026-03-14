@@ -10,11 +10,13 @@ def main():
     drone.recalibrate()
     time.sleep(16)
     print("Done recalibration")
-    print("Emergency stop, press space!")
+    print("For an emergency stop, press space!")
 
-    # camera = CameraSystem()       # idk if this works yet
-    # controller = HoverController()
-
+    # Setting drone to manual control (mode 1) and flying up to 0.5m (probably won't work)
+    drone.set_mode(1)
+    check_mode()
+    drone.manual_thrusts(100,100,100,100)
+    time.sleep(5)
 
     while True:
         stop = input()
@@ -22,25 +24,17 @@ def main():
             print("Emergency stop activated!")
             drone.emergency_stop()
             break
-        # print("Testing connection...")
 
-        # print("Mode:", drone.get_mode())
-
-        # print("Pitch:", drone.get_pitch())
-
-        # print("Roll:", drone.get_roll())
-
-        drone.set_mode(1)
-       
-        mode = drone.get_mode()
-        # print("mode:", mode)
+        # Stabilize drone at 0.5m
+        controller = hc.HoverController();
+        check_mode() # should show mode 2
+        controller.stabilize_drone()
         
-        hc.stabilize_drone(0,0,0,0)
-        time.sleep(5)
+        time.sleep(0.05) # avoiding constant comm with drone
 
-        drone.emergency_stop()
-
-
+def check_mode():
+    mode = drone.get_mode()
+    print("mode:", mode)
 
 if __name__ == "__main__":
     main()
