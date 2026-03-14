@@ -30,7 +30,7 @@ def main():
        
         mode = drone.get_mode()
         # print("mode:", mode)
-        hc.PID_hover(0,0,0,5)
+        hc.PID_hover(0,0,5)
        
         time.sleep(10)
 

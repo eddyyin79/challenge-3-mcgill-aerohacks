@@ -19,7 +19,7 @@ def stabilize_drone(self, speed):
 
     #a front left, b front right, c back left, d back right
     #drone.manual_thrusts(a, b, c, d)
-    def PID_hover(self, target_pitch, target_roll, target_yaw, target_altitude):
+    def PID_hover(self, target_pitch, target_roll, target_altitude):
         # Implement PID control logic here
         # Calculate errors
         pitch_error = target_pitch - drone.get_pitch()
