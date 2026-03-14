@@ -10,13 +10,7 @@ class MotorController:
         self.MOT_0.freq(50)
         self.MOT_0.duty_u16(0)
 
-        # Blink LED for 3 seconds
-        print("Blinking LED for 3 seconds...")
-        for i in range(6):
-            LED_BLUE.value(1)
-            time.sleep_ms(250)
-            LED_BLUE.value(0)
-            time.sleep_ms(250)
+
 
     # Motor On max speed 
     def motor_on_max(self):
