@@ -1,25 +1,27 @@
-from vision.camera import CameraSystem
-from control.hover_controller import HoverController
-from communication.esp_link import ESPLink
-from utils.config import *
+from python.vision.open_cv import CameraSystem
+from python.control.hover_controller import HoverController
+from python.communication import esp_link as drone
+from python.utils.config import *
 
 import time
 
 def main():
 
-    camera = CameraSystem()
-    controller = HoverController()
+    CONTROL_DT = 2000
 
-    drone = None  # replace later
+    # camera = CameraSystem()       # idk if this works yet
+    controller = HoverController()
 
     while True:
 
-        position = camera.get_position()
+        # position = camera.get_position() 
 
         roll,pitch,throttle = controller.update(position)
 
-        print("pos:",position)
-        print("cmd:",roll,pitch,throttle)
+        print("position:",position)
+        print("roll:", roll)
+        print("pitch:", pitch)
+        print("throttle:", throttle)
 
         time.sleep(CONTROL_DT)
 
